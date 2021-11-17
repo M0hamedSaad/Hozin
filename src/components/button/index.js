@@ -43,8 +43,5 @@ const styles = StyleSheet.create({
     borderRadius: normalize(28.5),
     height: normalize(57),
     width: '100%'
-
   },
-
-
 });

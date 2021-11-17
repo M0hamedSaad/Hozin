@@ -1,4 +1,5 @@
 const LOGO = require('../assets/images/hopin.png');
+const LOGO_GREEN = require('../assets/images/hopin-green.png');
 const UP_SHAPE = require('../assets/images/up_shape.png');
 const DOWN_SHAPE = require('../assets/images/down_shape.png');
 const EYE_OFF = require('../assets/images/eye-off.png');
@@ -16,6 +17,7 @@ const USER = require('../assets/images/user.png');
 
 export const IMAGES = {
   LOGO,
+  LOGO_GREEN,
   UP_SHAPE,
   DOWN_SHAPE,
   EYE_OFF,
