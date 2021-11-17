@@ -1,38 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
   SafeAreaView,
-  Image,
   ScrollView,
-  TouchableOpacity,
   Platform,
   KeyboardAvoidingView,
 } from 'react-native';
-import { Button, Input } from '../../components';
+import { Tabs } from '../../components';
 import styles from './styles';
-import { COLORS, IMAGES, normalize, showToast } from '../../utils';
-import Feather from 'react-native-vector-icons/Feather';
+import FastImage from 'react-native-fast-image';
+import { IMAGES, normalize } from '../../utils';
+import SignIn from './signIn';
+import SignUp from './signUp';
 
 const Sign = ({ navigation }) => {
-  const [phone, onChangePhone] = useState('');
-  const [password, onChangePassword] = useState('');
-  const [secure, setSecure] = useState(true);
-  const [loading, setLoading] = useState(false);
-
-  // signInWithPhoneNumber
-  async function signInWithPhoneNumber() {
-
-  }
-
+  const [tab, setTab] = useState(0)
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView style={{ flex: 1 }}
+      <FastImage
+        source={IMAGES.LOGO_GREEN}
+        style={styles.logo} />
+
+      <Tabs
+        tab={tab}
+        setTab={setTab} />
+
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
         behavior={Platform.OS == 'ios' ? 'padding' : null}>
+
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: 16 }}>
-
+          contentContainerStyle={{ paddingHorizontal: normalize(25) }}>
+          {
+            tab == 0 ?
+              <SignIn />
+              : <SignUp />
+          }
 
         </ScrollView>
       </KeyboardAvoidingView>
