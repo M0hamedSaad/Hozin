@@ -14,6 +14,7 @@ const LOG_OUT = require('../assets/images/log-out.png');
 const STAR = require('../assets/images/star.png');
 const SUCCESS = require('../assets/images/success.png');
 const USER = require('../assets/images/user.png');
+const HOTEL = require('../assets/images/card-hotel.png');
 
 export const IMAGES = {
   LOGO,
@@ -32,4 +33,5 @@ export const IMAGES = {
   STAR,
   SUCCESS,
   USER,
+  HOTEL
 };

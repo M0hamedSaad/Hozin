@@ -8,7 +8,7 @@ import { I18nManager } from 'react-native';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['userState', 'isSelectedState'],
+  whitelist: ['userState', 'skipBoardingState', 'registerUserState'],
 };
 const persistedReducer = persistReducer(persistConfig, reducers);
 
