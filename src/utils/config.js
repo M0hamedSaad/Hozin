@@ -1,1 +1,2 @@
-export const GOOGLE_MAPS_APIKEY = "AIzaSyCKP8uI1XVOCLvkD3sbVmM8dIDOjLWKnZI";
+export const GOOGLE_MAPS_APIKEY = "AIzaSyAtCki58tEweCbQnKaQV3g3Zlq4Wa7hVwQ";
+export const IMAGE_URL = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&=&key=AIzaSyAtCki58tEweCbQnKaQV3g3Zlq4Wa7hVwQ&photo_reference='
