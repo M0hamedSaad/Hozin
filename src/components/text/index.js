@@ -10,6 +10,7 @@ export const TextType = {
 
 export const Text = ({
     size = normalize(16),
+    numberOfLines,
     center,
     style,
     children,
@@ -32,6 +33,7 @@ export const Text = ({
 
     return (
         <RNText
+            numberOfLines={numberOfLines}
             style={[
                 {
                     fontFamily: type,

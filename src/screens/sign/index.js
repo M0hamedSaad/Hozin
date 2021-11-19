@@ -4,6 +4,7 @@ import {
   ScrollView,
   Platform,
   KeyboardAvoidingView,
+  View
 } from 'react-native';
 import { Tabs } from '../../components';
 import styles from './styles';
@@ -11,6 +12,9 @@ import FastImage from 'react-native-fast-image';
 import { IMAGES, normalize } from '../../utils';
 import SignIn from './signIn';
 import SignUp from './signUp';
+import * as Animatable from 'react-native-animatable';
+const { createAnimatableComponent } = Animatable;
+const AnimatableView = createAnimatableComponent(View);
 
 const Sign = ({ navigation }) => {
   const [tab, setTab] = useState(0)
@@ -33,8 +37,14 @@ const Sign = ({ navigation }) => {
           contentContainerStyle={{ paddingHorizontal: normalize(25) }}>
           {
             tab == 0 ?
-              <SignIn />
-              : <SignUp />
+              <AnimatableView animation={'slideInRight'} duration={200}>
+                <SignIn navigation={navigation} />
+              </AnimatableView>
+              :
+              <AnimatableView animation={'slideInLeft'} duration={200}>
+                <SignUp navigation={navigation} />
+              </AnimatableView>
+
           }
 
         </ScrollView>

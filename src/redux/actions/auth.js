@@ -1,5 +1,6 @@
 import { LOGIN, LOGOUT } from '../types'
 
+
 export const login = (user) => {
   return (dispatch) => {
     dispatch({

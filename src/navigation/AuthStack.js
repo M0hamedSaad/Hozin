@@ -6,7 +6,6 @@ import OnBoard from '../screens/onBoard';
 const Stack = createNativeStackNavigator();
 const Auth = () => {
   const isSkip = useSelector(state => state.skipBoardingState.isSkip);
-  console.log({ isSkip });
   return (
     <Stack.Navigator
       //  initialRouteName={isSkip ? 'Sign' : 'OnBoard'}
