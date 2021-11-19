@@ -12,7 +12,6 @@ const Splash = ({ navigation }) => {
   const user = useSelector(state => state.userState.user);
 
   useEffect(() => {
-    console.log({ user });
     const timer = setTimeout(() => {
       if (user) navigation.replace('HomeStack')
       else navigation.replace('AuthStack')

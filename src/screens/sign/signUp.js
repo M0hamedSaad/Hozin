@@ -28,7 +28,7 @@ export const SignUp = ({ navigation }) => {
                 dispatch(registerNewUser(user))
                 dispatch(login(user))
                 setLoadig(false)
-                showToast(user.username + ' ,has been created successfully.', 'success')
+                showToast(user?.username + ' ,has been created successfully.', 'success')
             }
             else {
                 setLoadig(false)

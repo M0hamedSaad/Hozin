@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   View,
   SafeAreaView,
@@ -13,8 +13,8 @@ import { Text } from '../../components'
 import { getHotels } from '../../redux/actions'
 import { COLORS, FONTS, IMAGES, normalize } from '../../utils'
 import styles from './styles'
-import { IMAGE_URL } from '../../utils/config'
 import LottieView from 'lottie-react-native';
+import { Item } from './item'
 
 const Home = ({ navigation }) => {
   const dispatch = useDispatch()
@@ -25,60 +25,16 @@ const Home = ({ navigation }) => {
   const category = ['Recommend', 'Popular', 'Trending']
   const [selctedIndex, setSelectedIndex] = useState(0)
 
-  useEffect(() => {
-    dispatch(getHotels())
-  }, [])
-
-  useEffect(() => {
-    console.log({ nextPage });
-  }, [nextPage])
-
-  const onEndReached = () => {
-    nextPage ? dispatch(getHotels(nextPage)) : null
-  }
-  const renderItem = useCallback(
-    ({ item, index }) => {
-      return (
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Details', { item })}
-          activeOpacity={.75}
-          style={styles.endCard}>
-
-          <FastImage
-            source={{ uri: item?.photos ? IMAGE_URL + item?.photos[0]?.photo_reference : '_' }}
-            resizeMode='cover'
-            style={styles.img} >
-            <View style={styles.rateContainer}>
-              <FastImage
-                source={IMAGES.STAR}
-                style={styles.icon} />
-              <Text color='#fff'>{item?.rating}</Text>
-            </View>
-
-            <View style={styles.titleContainer}>
-              <Text
-                type={FONTS.BOLD}
-                size={normalize(20)}
-                color={'#fff'}>
-                {item?.name}
-              </Text>
-              <Text
-                style={{ marginTop: 7 }}
-                size={normalize(14)}
-                color={COLORS.WHITE + 80}>
-                {item?.vicinity}
-              </Text>
-            </View>
-
-          </FastImage>
-        </TouchableOpacity>
-      )
-    },[])
+  useEffect(() => { dispatch(getHotels()) }, []) //get hotels
+  const onEndReached = () => { nextPage && dispatch(getHotels(nextPage)) }//pagination..
+  const renderItem = ({ item }) => { return (<Item item={item} navigation={navigation} />) }
 
   return (
     <SafeAreaView style={styles.container}>
       {/**got to profile */}
-      <TouchableOpacity style={styles.iconContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Profile')}
+        style={styles.iconContainer}>
         <FastImage
           source={IMAGES.AWARD}
           style={styles.icon}
@@ -92,7 +48,7 @@ const Home = ({ navigation }) => {
           style={{ marginVertical: normalize(40) }}
           size={normalize(28)}
           type={FONTS.BOLD}>
-          {`Good Morning,\n${userData.username}!`}
+          {`Good Morning,\n${userData?.username}!`}
         </Text>
 
         {/**tabs .. */}
@@ -140,6 +96,15 @@ const Home = ({ navigation }) => {
               </View>
               :
               <FlatList
+                ListFooterComponent={() => {
+                  return (
+                    loading && nextPage ?
+                      <View style={styles.centerLoader}>
+                        <ActivityIndicator
+                          color={COLORS.DARK} />
+                      </View>
+                      : null)
+                }}
                 initialNumToRender={2}
                 onEndReached={onEndReached}
                 extraData={hotels}
@@ -154,7 +119,7 @@ const Home = ({ navigation }) => {
           }
         </View>
       </View>
-    </SafeAreaView>
+    </SafeAreaView >
   )
 }
 export default Home

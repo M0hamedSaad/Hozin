@@ -20,8 +20,7 @@ const styles = StyleSheet.create({
     width: normalize(95),
     height: normalize(95),
     borderRadius: normalize(6),
-    backgroundColor:COLORS.DARK+30
-
+    backgroundColor: COLORS.DARK + 30
   },
   cardContainer: {
     width: normalize(325),

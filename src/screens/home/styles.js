@@ -86,6 +86,12 @@ const styles = StyleSheet.create({
     width: normalize(200),
     height: normalize(200),
     alignSelf: 'center'
+  },
+  centerLoader: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal:25
   }
 });
 

@@ -49,6 +49,7 @@ const Details = ({ navigation, route }) => {
       </Text>
 
       <Button
+        onPress={() => { navigation.navigate('Booking', { item }) }}
         width={normalize(165)}
         style={styles.btn}
         title={'Book'} />

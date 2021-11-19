@@ -19,7 +19,6 @@ export const getHotels = (pagetoken) => {
           pagetoken,
         }
       })
-      console.log('hotels:---->', res);
       if (res?.data?.results.length > 0) {
         pagetoken == '' || pagetoken == undefined ? allHotels = res?.data?.results :
           allHotels = [...allHotels, ...res?.data?.results]
@@ -35,8 +34,6 @@ export const getHotels = (pagetoken) => {
 
 
     } catch (error) {
-      console.log('ERROR--->', error);
-      // showToast('Error', 'error', true, 'Sorry ,something error')
     }
 
   }
